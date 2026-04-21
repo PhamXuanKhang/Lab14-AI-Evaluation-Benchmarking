@@ -1,3 +1,17 @@
+# ──────────────────────────────────────────
+# AGENT WRAPPER CHO BENCHMARK
+# ──────────────────────────────────────────
+class RagAgent:
+    def __init__(self, chunk_path="docs/truyen.md", chunk_size=300, overlap=50):
+        self.chunks = load_and_chunk(chunk_path, chunk_size=chunk_size, overlap=overlap)
+        self.chunk_embeddings = get_embeddings(self.chunks)
+
+    async def query(self, question):
+        # Truy hồi top-3 chunk
+        relevant, _ = retrieve(question, self.chunks, self.chunk_embeddings, top_k=3)
+        # Sinh câu trả lời
+        answer = ask(question, self.chunks, self.chunk_embeddings)
+        return {"answer": answer, "context": "\n\n---\n\n".join(relevant)}
 # rag_system.py
 import re
 import os

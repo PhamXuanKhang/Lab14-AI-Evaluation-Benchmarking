@@ -6,19 +6,21 @@ from engine.runner import BenchmarkRunner
 from agent.main_agent import MainAgent
 from engine.retrieval_eval import RetrievalEvaluator
 import numpy as np
+from rag.rag_system import get_embeddings, load_and_chunk
+from engine import rag_system
 
 # Giả lập các components Expert
 class ExpertEvaluator:
     def __init__(self):
         self.retrieval_eval = RetrievalEvaluator()
         # Load chunk embeddings và chunks một lần để dùng cho mọi câu hỏi
-        import pickle
-        # Giả sử đã lưu embeddings và chunks, nếu chưa thì cần tạo và lưu trước
-        # Hoặc có thể load lại từ pipeline rag_system
-        # Ở đây sẽ load lại từ rag_system cho đơn giản
-        from rag.rag_system import load_and_chunk, get_embeddings
         self.chunks = load_and_chunk("docs/truyen.md", chunk_size=300, overlap=50)
         self.chunk_embeddings = get_embeddings(self.chunks)
+
+    def cosine_sim(self, a, b):
+        a = a / np.linalg.norm(a)
+        b = b / np.linalg.norm(b)
+        return float(np.dot(a, b))
 
     async def score(self, case, resp): 
         # Tính toán Hit Rate và MRR thực tế
@@ -30,9 +32,17 @@ class ExpertEvaluator:
         top_idx = list(top_idx)
         hit = self.retrieval_eval.calculate_hit_rate(ground_truth_id, top_idx, top_k=3)
         mrr = self.retrieval_eval.calculate_mrr(ground_truth_id, top_idx)
+        # Faithfulness: answer vs. top-1 context
+        answer = resp["answer"] if isinstance(resp, dict) and "answer" in resp else str(resp)
+        context = self.chunks[top_idx[0]] if top_idx else ""
+        emb = get_embeddings([answer, context])
+        faithfulness = self.cosine_sim(emb[0], emb[1])
+        # Relevancy: question vs. top-1 context
+        emb2 = get_embeddings([question, context])
+        relevancy = self.cosine_sim(emb2[0], emb2[1])
         return {
-            "faithfulness": 0.9,  # giữ nguyên mock hoặc có thể tính thật nếu muốn
-            "relevancy": 0.8,
+            "faithfulness": faithfulness,
+            "relevancy": relevancy,
             "retrieval": {"hit_rate": hit, "mrr": mrr}
         }
 
@@ -58,7 +68,7 @@ async def run_benchmark_with_results(agent_version: str):
         print("❌ File data/golden_set.jsonl rỗng. Hãy tạo ít nhất 1 test case.")
         return None, None
 
-    runner = BenchmarkRunner(MainAgent(), ExpertEvaluator(), MultiModelJudge())
+    runner = BenchmarkRunner(rag_system, ExpertEvaluator(), MultiModelJudge())
     results = await runner.run_all(dataset)
 
     total = len(results)
