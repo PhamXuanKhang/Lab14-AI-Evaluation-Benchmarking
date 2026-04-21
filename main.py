@@ -6,7 +6,7 @@ from engine.runner import BenchmarkRunner
 from agent.main_agent import MainAgent
 from engine.retrieval_eval import RetrievalEvaluator
 import numpy as np
-from rag.rag_system import get_embeddings, load_and_chunk
+from rag.rag_system import RagAgent, get_embeddings, load_and_chunk
 from engine import rag_system
 
 # Giả lập các components Expert
@@ -68,7 +68,7 @@ async def run_benchmark_with_results(agent_version: str):
         print("❌ File data/golden_set.jsonl rỗng. Hãy tạo ít nhất 1 test case.")
         return None, None
 
-    runner = BenchmarkRunner(rag_system, ExpertEvaluator(), MultiModelJudge())
+    runner = BenchmarkRunner(RagAgent(), ExpertEvaluator(), MultiModelJudge())
     results = await runner.run_all(dataset)
 
     total = len(results)
