@@ -1,0 +1,610 @@
+[
+  {
+    "test_case": "Cửa hiệu không tên trong đoạn văn nằm ở đâu?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Cửa hiệu không tên trong đoạn văn nằm ở đâu?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.510995799999364,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm muốn cầm cố chiếc hộp nhỏ bằng nhung đen?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm muốn cầm cố chiếc hộp nhỏ bằng nhung đen?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.7970452000008663,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Ai là người yêu cũ của Lâm, mà anh không thể nhớ nổi những kỷ niệm với cô?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Ai là người yêu cũ của Lâm, mà anh không thể nhớ nổi những kỷ niệm với cô?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.9000300000006973,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm lại cảm thấy như một diễn viên trên sân khấu không có khán giả?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm lại cảm thấy như một diễn viên trên sân khấu không có khán giả?' như sau: [Câu trả lời mẫu].",
+    "latency": 2.115480899999966,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Lâm cảm thấy thế nào về cuộc sống của mình mặc dù anh đã đạt được nhiều thành tựu?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Lâm cảm thấy thế nào về cuộc sống của mình mặc dù anh đã đạt được nhiều thành tựu?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.4503710999997566,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Theo Mai, lý do Lâm không thể xây dựng tương lai là gì?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Theo Mai, lý do Lâm không thể xây dựng tương lai là gì?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.5114407000000938,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm cảm thấy những công trình của mình chỉ là 'lăng mộ bằng đá và kính'?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm cảm thấy những công trình của mình chỉ là 'lăng mộ bằng đá và kính'?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.4962500000001455,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Nếu Lâm đồng ý chuộc lại mười năm ký ức, điều gì sẽ xảy ra với anh?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Nếu Lâm đồng ý chuộc lại mười năm ký ức, điều gì sẽ xảy ra với anh?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.6921932000004745,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Lâm nhớ lại điều gì khi anh nhận bằng tốt nghiệp?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Lâm nhớ lại điều gì khi anh nhận bằng tốt nghiệp?' như sau: [Câu trả lời mẫu].",
+    "latency": 2.125912999999855,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao ông lão chủ tiệm cầm đồ lại thở dài khi nhìn những người trẻ tuổi rời đi?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao ông lão chủ tiệm cầm đồ lại thở dài khi nhìn những người trẻ tuổi rời đi?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.3058496999983618,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Nhân vật nào trong đoạn văn đã từ bỏ cuộc sống đầy tham vọng để trở thành một người thợ mộc bình thường?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Nhân vật nào trong đoạn văn đã từ bỏ cuộc sống đầy tham vọng để trở thành một người thợ mộc bình thường?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.508087300000625,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao ông lão chủ tiệm lại thở dài khi nhìn người trẻ tuổi rời đi?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao ông lão chủ tiệm lại thở dài khi nhìn người trẻ tuổi rời đi?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.6780576999990444,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 0.5
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Phong cách thiết kế của nhân vật chính trong đoạn văn được mô tả như thế nào?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Phong cách thiết kế của nhân vật chính trong đoạn văn được mô tả như thế nào?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.7849764999991748,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao nhân vật Lâm lại gạch bỏ gian bếp rộng trong thiết kế biệt thự?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao nhân vật Lâm lại gạch bỏ gian bếp rộng trong thiết kế biệt thự?' như sau: [Câu trả lời mẫu].",
+    "latency": 2.0970221999996284,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Ai là người đưa bát canh nóng cho Lâm khi anh thức đêm vẽ đồ án?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Ai là người đưa bát canh nóng cho Lâm khi anh thức đêm vẽ đồ án?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.2587948000000324,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm cảm thấy cô đơn khi nhìn vào mắt những người mẫu và minh tinh?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm cảm thấy cô đơn khi nhìn vào mắt những người mẫu và minh tinh?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.5031851000021561,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Nhân vật Lâm cảm thấy như thế nào về những chiếc đồng hồ trong nhà mình?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Nhân vật Lâm cảm thấy như thế nào về những chiếc đồng hồ trong nhà mình?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.82248780000009,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 0.5
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Ông lão trong tiệm cầm đồ có ý nói gì về danh vọng và nỗi đau?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Ông lão trong tiệm cầm đồ có ý nói gì về danh vọng và nỗi đau?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.0090689000026032,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Cái giá để lấy lại ký ức là gì?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Cái giá để lấy lại ký ức là gì?' như sau: [Câu trả lời mẫu].",
+    "latency": 2.2116030999968643,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm cảm thấy những ký ức đau thương có giá trị?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm cảm thấy những ký ức đau thương có giá trị?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.4163860000007844,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 0.5
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Nhân vật chính đang trải qua cảm xúc gì khi đứng trong đám tang của cha?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Nhân vật chính đang trải qua cảm xúc gì khi đứng trong đám tang của cha?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.5038500000009662,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 0.5
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao nhân vật Lâm cảm thấy cơ thể mình nặng nề hơn và hơi thở ngắn hơn?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao nhân vật Lâm cảm thấy cơ thể mình nặng nề hơn và hơi thở ngắn hơn?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.6067879000001994,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Lâm đã từ bỏ những gì khi trở về quê?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Lâm đã từ bỏ những gì khi trở về quê?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.9145201999999699,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Mai không ngạc nhiên khi nhìn thấy Lâm trở về?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Mai không ngạc nhiên khi nhìn thấy Lâm trở về?' như sau: [Câu trả lời mẫu].",
+    "latency": 2.0659163000018452,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 0.5
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Lâm có cảm giác gì về thời gian đã qua với Mai?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Lâm có cảm giác gì về thời gian đã qua với Mai?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.1971365999997943,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm lại nghĩ rằng tiệm cầm đồ không phải là một nơi tà ác?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm lại nghĩ rằng tiệm cầm đồ không phải là một nơi tà ác?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.5047185000003083,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Lâm đã làm gì với những đứa trẻ trong làng?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Lâm đã làm gì với những đứa trẻ trong làng?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.448460999999952,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm thấy những khoảnh khắc bình dị trở thành điều quý giá nhất?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm thấy những khoảnh khắc bình dị trở thành điều quý giá nhất?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.9071483999978227,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Người lạ để lại gì trên bàn khi rời đi?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Người lạ để lại gì trên bàn khi rời đi?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.8555648000001383,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm không còn lạc lõng trong giấc mơ của mình?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm không còn lạc lõng trong giấc mơ của mình?' như sau: [Câu trả lời mẫu].",
+    "latency": 1.1718914000011864,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Lâm nghĩ gì về ký ức?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Lâm nghĩ gì về ký ức?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.509794100002182,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 0.0,
+        "mrr": 0.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  },
+  {
+    "test_case": "Tại sao Lâm không còn sợ thời gian?",
+    "agent_response": "Dựa trên tài liệu hệ thống, tôi xin trả lời câu hỏi 'Tại sao Lâm không còn sợ thời gian?' như sau: [Câu trả lời mẫu].",
+    "latency": 0.9173902000002272,
+    "ragas": {
+      "faithfulness": 0.9,
+      "relevancy": 0.8,
+      "retrieval": {
+        "hit_rate": 1.0,
+        "mrr": 1.0
+      }
+    },
+    "judge": {
+      "final_score": 4.5,
+      "agreement_rate": 0.8,
+      "reasoning": "Cả 2 model đồng ý đây là câu trả lời tốt."
+    },
+    "status": "pass"
+  }
+]
