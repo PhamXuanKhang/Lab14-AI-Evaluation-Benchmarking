@@ -1,3 +1,10 @@
+"""
+Synthetic Data Generation (SDG) script.
+
+Generates a Golden Dataset of 50+ QA pairs from the SAME knowledge base
+that the agents retrieve from, so expected_retrieval_ids reliably match
+what retrieval can return.
+"""
 import json
 import asyncio
 import os
@@ -7,6 +14,7 @@ from typing import List, Dict
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 
+# Allow running as a script from repo root
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from data.knowledge_base import KNOWLEDGE_BASE
 

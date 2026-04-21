@@ -2,12 +2,25 @@ from typing import List, Dict
 import statistics
 
 class RetrievalEvaluator:
+    """
+    Evaluator for retrieval quality metrics.
+    Calculates Hit Rate and MRR (Mean Reciprocal Rank).
+    """
+
     def __init__(self, top_k: int = 3):
         self.top_k = top_k
 
-    def calculate_hit_rate(self, expected_ids: List[str], retrieved_ids: List[str], top_k: int = 3) -> float:
+    def calculate_hit_rate(self, expected_ids: List[str], retrieved_ids: List[str], top_k: int = None) -> float:
         """
         Tính toán xem ít nhất 1 trong expected_ids có nằm trong top_k của retrieved_ids không.
+
+        Args:
+            expected_ids: List of ground truth document IDs
+            retrieved_ids: List of retrieved document IDs (ordered by relevance)
+            top_k: Number of top results to consider
+
+        Returns:
+            1.0 if at least one expected doc is in top_k, else 0.0
         """
         if not expected_ids:
             return 0.0  # No expected docs means we can't evaluate
@@ -22,6 +35,13 @@ class RetrievalEvaluator:
         Tính Mean Reciprocal Rank.
         Tìm vị trí đầu tiên của một expected_id trong retrieved_ids.
         MRR = 1 / position (vị trí 1-indexed). Nếu không thấy thì là 0.
+
+        Args:
+            expected_ids: List of ground truth document IDs
+            retrieved_ids: List of retrieved document IDs (ordered by relevance)
+
+        Returns:
+            1/position of first match, or 0.0 if no match
         """
         if not expected_ids:
             return 0.0
@@ -32,24 +52,24 @@ class RetrievalEvaluator:
         return 0.0
 
     def calculate_precision_at_k(self, expected_ids: List[str], retrieved_ids: List[str], k: int = None) -> float:
-            """
-            Calculate Precision@K: proportion of relevant docs in top-k.
+        """
+        Calculate Precision@K: proportion of relevant docs in top-k.
 
-            Args:
-                expected_ids: List of ground truth document IDs
-                retrieved_ids: List of retrieved document IDs
-                k: Number of top results to consider
+        Args:
+            expected_ids: List of ground truth document IDs
+            retrieved_ids: List of retrieved document IDs
+            k: Number of top results to consider
 
-            Returns:
-                Precision score between 0.0 and 1.0
-            """
-            if not expected_ids or not retrieved_ids:
-                return 0.0
+        Returns:
+            Precision score between 0.0 and 1.0
+        """
+        if not expected_ids or not retrieved_ids:
+            return 0.0
 
-            k = k or self.top_k
-            top_k_retrieved = retrieved_ids[:k]
-            relevant_in_top_k = sum(1 for doc_id in top_k_retrieved if doc_id in expected_ids)
-            return relevant_in_top_k / k
+        k = k or self.top_k
+        top_k_retrieved = retrieved_ids[:k]
+        relevant_in_top_k = sum(1 for doc_id in top_k_retrieved if doc_id in expected_ids)
+        return relevant_in_top_k / k
 
     def calculate_recall_at_k(self, expected_ids: List[str], retrieved_ids: List[str], k: int = None) -> float:
         """
@@ -94,10 +114,17 @@ class RetrievalEvaluator:
             "retrieved_ids": retrieved_ids[:self.top_k]
         }
 
-    async def evaluate_batch(self, dataset: List[Dict]) -> Dict:
+    async def evaluate_batch(self, dataset: List[Dict], agent_responses: List[Dict] = None) -> Dict:
         """
         Chạy eval cho toàn bộ bộ dữ liệu.
-        Dataset cần có trường 'expected_retrieval_ids' và Agent trả về 'retrieved_ids'.
+        Dataset cần có trường 'expected_retrieval_ids' và 'retrieved_ids' (từ agent response).
+
+        Args:
+            dataset: List of test cases with expected_retrieval_ids
+            agent_responses: Optional list of agent responses with retrieved_ids
+
+        Returns:
+            Dict with average metrics and detailed results
         """
         hit_rates = []
         mrrs = []
@@ -203,6 +230,7 @@ class RetrievalEvaluator:
 
         return recommendations
 
+# For testing
 if __name__ == "__main__":
     import asyncio
 
@@ -240,4 +268,3 @@ if __name__ == "__main__":
         print(f"  Recommendations: {failure_analysis['recommendations']}")
 
     asyncio.run(test())
-

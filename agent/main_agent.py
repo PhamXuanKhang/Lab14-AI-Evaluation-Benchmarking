@@ -1,7 +1,7 @@
 import asyncio
-from typing import List, Dict
 import os
 import sys
+from typing import List, Dict, Tuple
 
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
@@ -18,8 +18,9 @@ _openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # ---------------------------------------------------------------------------
 
 _UNSAFE_PATTERNS_V1 = [
-    "api key", "password", "mật khẩu", "credential",
-    "bỏ qua", "ignore all", "quên đi", "hacker", "tấn công",
+    "api key", "credential", "private key", "secret", "token",
+    "bỏ qua", "ignore previous", "jailbreak", "bypass",
+    "hack", "tấn công", "xâm nhập",
 ]
 
 _OUT_OF_SCOPE_PATTERNS_V1 = [
@@ -27,16 +28,13 @@ _OUT_OF_SCOPE_PATTERNS_V1 = [
     "công thức nấu", "phở", "bóng đá",
 ]
 
-# V2 adds more comprehensive patterns
+# V2 extends with a few extra patterns (still basic)
 _UNSAFE_PATTERNS_V2 = _UNSAFE_PATTERNS_V1 + [
-    "secret", "token", "private key", "hack", "exploit",
-    "jailbreak", "bypass", "viết thơ", "đóng vai", "roleplay",
-    "forget previous", "disregard", "new persona",
+    "prompt injection", "đóng vai", "roleplay",
 ]
 
 _OUT_OF_SCOPE_PATTERNS_V2 = _OUT_OF_SCOPE_PATTERNS_V1 + [
-    "lịch sử thế giới", "địa lý", "toán học", "thể thao",
-    "âm nhạc", "phim ảnh", "chính trị",
+    "lịch sử", "địa lý", "toán học",
 ]
 
 def _check_guardrails(question: str, unsafe: list, oos: list):
@@ -78,56 +76,70 @@ _V1_KEYWORD_MAP: Dict[str, List[str]] = {
     "hoàn tiền": ["policy_expense"],
 }
 
+
 class MainAgent:
     """
-    Đây là Agent mẫu sử dụng kiến trúc RAG đơn giản.
-    Sinh viên nên thay thế phần này bằng Agent thực tế đã phát triển ở các buổi trước.
+    V1 Agent – Basic keyword retrieval + real LLM generation + basic guardrails.
+    Intentionally limited to simulate a first-draft system that needs improvement.
     """
+
     def __init__(self):
         self.name = "SupportAgent-v1"
         self.version = "v1"
 
     def _retrieve(self, question: str) -> List[str]:
-            """Retrieval V1: simple exact-keyword matching (incomplete coverage)."""
-            q = question.lower()
-            matched = []
-            for kw, doc_ids in _V1_KEYWORD_MAP.items():
-                if kw in q:
-                    matched.extend(doc_ids)
-
-            # deduplicate, preserve order
-            seen, result = set(), []
-            for d in matched:
-                if d not in seen:
-                    seen.add(d)
-                    result.append(d)
-
-            # Fallback: return the first 2 docs (not necessarily relevant)
-            if not result:
-                result = KNOWLEDGE_BASE_IDS[:2]
-
-            return result[:3]
-
-    def _generate_answer(self, question: str, contexts: List[str]) -> str:
-        """Generation V1: simple keyword-based template (no LLM call)."""
+        """Retrieval V1: simple exact-keyword matching (incomplete coverage)."""
         q = question.lower()
-        parts = [f"Dựa trên chính sách công ty, xin trả lời câu hỏi của bạn:"]
+        matched = []
+        for kw, doc_ids in _V1_KEYWORD_MAP.items():
+            if kw in q:
+                matched.extend(doc_ids)
 
-        if "bảo mật" in q or "mật khẩu" in q:
-            parts.append("Về bảo mật: mật khẩu phải dài ít nhất 12 ký tự và thay đổi mỗi 90 ngày.")
-        if "làm việc từ xa" in q or "remote" in q:
-            parts.append("Về remote work: nhân viên có thể làm việc từ xa tối đa 2-3 ngày/tuần.")
-        if "nghỉ phép" in q or "phép" in q:
-            parts.append("Về nghỉ phép: nhân viên dưới 1 năm được 12 ngày phép/năm.")
-        if "đánh giá" in q or "kpi" in q:
-            parts.append("Về đánh giá: có 2 kỳ đánh giá mỗi năm, mid-year và annual review.")
-        if len(parts) == 1:
-            parts.append("[Thông tin chi tiết có trong tài liệu chính sách nội bộ của công ty.]")
+        # deduplicate, preserve order
+        seen, result = set(), []
+        for d in matched:
+            if d not in seen:
+                seen.add(d)
+                result.append(d)
 
-        return " ".join(parts)
+        # Fallback: return the first 2 docs (not necessarily relevant)
+        if not result:
+            result = KNOWLEDGE_BASE_IDS[:2]
+
+        return result[:2]
+
+    def _fallback_answer(self, contexts: List[str]) -> str:
+        if contexts:
+            return contexts[0][:300] + "..."
+        return "Không tìm thấy thông tin phù hợp trong tài liệu."
+
+    async def _generate_answer_with_llm(self, question: str, contexts: List[str]) -> Tuple[str, int]:
+        """
+        Generation V1: call OpenAI with a short, minimally grounded prompt.
+        Returns (answer: str, tokens_used: int)
+        """
+        context_text = "\n\n---\n\n".join(contexts[:2]) if contexts else "Không có tài liệu liên quan."
+        system_prompt = "Bạn là trợ lý nội bộ. Trả lời rõ ràng, dễ hiểu, ưu tiên thông tin trong tài liệu."
+        user_prompt = f"Tài liệu:\n{context_text}\n\nCâu hỏi: {question}\nTrả lời 4-6 câu, ngắn gọn và đúng trọng tâm."
+
+        try:
+            resp = await _openai_client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+                temperature=0.4,
+                max_tokens=320,
+            )
+            answer = resp.choices[0].message.content.strip()
+            tokens = resp.usage.total_tokens if resp.usage else 200
+            return answer, tokens
+        except Exception:
+            return self._fallback_answer(contexts), 0
 
     async def query(self, question: str) -> Dict:
-        """Main query method: guardrails → retrieval → generation."""
+        """Main query method: guardrails → retrieval → LLM generation."""
         await asyncio.sleep(0.05)
 
         # Guardrails V1 (basic)
@@ -142,7 +154,7 @@ class MainAgent:
                 "contexts": [],
                 "retrieved_ids": [],
                 "metadata": {
-                    "model": "template-v1",
+                    "model": "gpt-4o-mini",
                     "tokens_used": 20,
                     "guardrail_triggered": reason,
                     "version": self.version,
@@ -152,15 +164,14 @@ class MainAgent:
         # Retrieval & generation
         retrieved_ids = self._retrieve(question)
         contexts = [KNOWLEDGE_BASE_DICT.get(doc_id, "") for doc_id in retrieved_ids]
-        answer = self._generate_answer(question, contexts)
-        tokens_used = 50 + len(question.split()) * 5
+        answer, tokens_used = await self._generate_answer_with_llm(question, contexts)
 
         return {
             "answer": answer,
             "contexts": contexts,
             "retrieved_ids": retrieved_ids,
             "metadata": {
-                "model": "template-v1",
+                "model": "gpt-4o-mini",
                 "tokens_used": tokens_used,
                 "version": self.version,
             }
