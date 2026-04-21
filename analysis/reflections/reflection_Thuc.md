@@ -2,7 +2,7 @@
 
 **Role:** Data Engineer - SDG & Retrieval Evaluation
 **Date:** 2026-04-21
-
+**MSSV:** 2A202600238
 ---
 
 ## 1. Đóng góp cá nhân (Engineering Contribution)

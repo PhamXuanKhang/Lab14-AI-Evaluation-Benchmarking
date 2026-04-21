@@ -2,7 +2,7 @@
 
 **Role:** QA / Analyst - Testing & Failure Analysis
 **Date:** 2026-04-21
-
+**MSSV:** 2A202600210
 ---
 
 ## 1. Đóng góp cá nhân (Engineering Contribution)
