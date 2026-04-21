@@ -4,15 +4,36 @@ import os
 import time
 from engine.runner import BenchmarkRunner
 from agent.main_agent import MainAgent
+from engine.retrieval_eval import RetrievalEvaluator
+import numpy as np
 
 # Giả lập các components Expert
 class ExpertEvaluator:
+    def __init__(self):
+        self.retrieval_eval = RetrievalEvaluator()
+        # Load chunk embeddings và chunks một lần để dùng cho mọi câu hỏi
+        import pickle
+        # Giả sử đã lưu embeddings và chunks, nếu chưa thì cần tạo và lưu trước
+        # Hoặc có thể load lại từ pipeline rag_system
+        # Ở đây sẽ load lại từ rag_system cho đơn giản
+        from rag.rag_system import load_and_chunk, get_embeddings
+        self.chunks = load_and_chunk("docs/truyen.md", chunk_size=300, overlap=50)
+        self.chunk_embeddings = get_embeddings(self.chunks)
+
     async def score(self, case, resp): 
-        # Giả lập tính toán Hit Rate và MRR
+        # Tính toán Hit Rate và MRR thực tế
+        # Lấy ground_truth_id từ case
+        question = case["question"]
+        ground_truth_id = case["ground_truth_id"]
+        # Truy hồi top-k chunk
+        top_idx, _ = self.retrieval_eval.retrieve_top_k(question, self.chunks, self.chunk_embeddings, k=3)
+        top_idx = list(top_idx)
+        hit = self.retrieval_eval.calculate_hit_rate(ground_truth_id, top_idx, top_k=3)
+        mrr = self.retrieval_eval.calculate_mrr(ground_truth_id, top_idx)
         return {
-            "faithfulness": 0.9, 
+            "faithfulness": 0.9,  # giữ nguyên mock hoặc có thể tính thật nếu muốn
             "relevancy": 0.8,
-            "retrieval": {"hit_rate": 1.0, "mrr": 0.5}
+            "retrieval": {"hit_rate": hit, "mrr": mrr}
         }
 
 class MultiModelJudge:
