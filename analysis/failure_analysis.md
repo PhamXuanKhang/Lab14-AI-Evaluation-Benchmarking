@@ -1,7 +1,7 @@
 # Báo cáo Phân tích Thất bại (Failure Analysis Report)
 
 **Ngày thực hiện:** 2026-04-21
-**Nhóm thực hiện:** Khang, Duy, Thức, Thư
+**Nhóm thực hiện:** 6
 
 ---
 
